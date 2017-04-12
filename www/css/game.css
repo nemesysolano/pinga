@@ -1,0 +1,51 @@
+
+            #card {
+                
+            }
+
+            #card table {
+                margin-top:15%;                
+                margin-left:auto;
+                margin-right:auto;
+                border-spacing: 0px;
+                background-color:#FCFCFC;
+                font-weight: bolder;
+                font-family:  Courier New;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                border-color:transparent;
+                font-size:30px;
+                -webkit-box-shadow: 0 0 8px white;
+                -moz-box-shadow: 0 0 8px white;
+                box-shadow: 0 0 8px white;
+            }
+            #card table th{
+                padding:0px;                
+            }
+
+            #card table td {
+                padding:0px;
+                text-align: center;
+            }
+
+            .column-btn {
+                margin:5px;
+                border:1px solid transparent;
+                width:36px;               
+                color:white;                
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;                
+            }
+
+            .number-cell {  
+                border:none;
+                color: indigo;                              
+                display:block;  
+                margin:5px;              
+            }
+
+            .free-cell {
+                color: darkgoldenrod;
+            }
