@@ -1,0 +1,75 @@
+
+<template is="pinga-card">
+    <table id="pingaCardLayout">
+        <thead id="pingaCardLayoutHeader">
+            <tr>
+                <th><div class="column-btn" style="background-color:crimson">P</div></th>
+                <th><div class="column-btn" style="background-color:darkblue">I</div></th>
+                <th><div class="column-btn" style="background-color: chocolate">N</div></th>
+                <th><div class="column-btn" style="background-color:green">G</div></th>
+                <th><div class="column-btn" style="background-color:crimson">A</div></th>
+            </tr>
+        </thead>
+        <tbody id="pingaCardLayoutBody">
+            <tr>
+                <td><div class="number-cell">28</div></td>
+                <td><div class="number-cell">15</div></td>
+                <td><div class="number-cell">40</div></td>
+                <td><div class="number-cell">31</div></td>
+                <td><div class="number-cell">22</div></td>
+            </tr>
+            <tr>
+                <td><div class="number-cell">15</div></td>
+                <td><div class="number-cell">89</div></td>
+                <td><div class="number-cell">63</div></td>
+                <td><div class="number-cell">76</div></td>
+                <td><div class="number-cell">66</div></td>
+            </tr>
+            <tr>
+                <td><div class="number-cell">41</div></td>
+                <td><div class="number-cell">52</div></td>
+                <td><div class="number-cell free-cell">&#x1F31F;</div></td>
+                <td><div class="number-cell">66</div></td>
+                <td><div class="number-cell">67</div></td>
+            </tr>
+            <tr>
+                <td><div class="number-cell">33</div></td>
+                <td><div class="number-cell">45</div></td>
+                <td><div class="number-cell">78</div></td>
+                <td><div class="number-cell">99</div></td>
+                <td><div class="number-cell">71</div></td>
+            </tr>
+            <tr>
+                <td><div class="number-cell">66</div></td>
+                <td><div class="number-cell">67</div></td>
+                <td><div class="number-cell">23</div></td>
+                <td><div class="number-cell">56</div></td>
+                <td><div class="number-cell">34</div></td>
+            </tr>                                                                                                    
+        </tbody>
+    </table>
+</template>
+
+<script type="text/javascript">
+    class PingaCard extends Polymer.Element {
+        static get is() { return 'pinga-card'; }
+
+        static get config() {
+            return {
+                properties: {
+                    //the properties you know and love from Polymer
+                },
+                observers: [
+                    //the observers you know and love from Polymer
+                ]
+            }
+        }
+
+        constructor() {
+            super();
+            
+        }
+    }
+
+    customElements.define(PingaCard.is, PingaCard);
+<script>
