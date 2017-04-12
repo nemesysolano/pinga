@@ -1,0 +1,20 @@
+{
+  "name": "PINGA",
+  "homepage": "https://github.com/nemesysolano/pinga",
+  "authors": [
+    "Rafael Solano Martínez <nemesysolano@gmail.com>"
+  ],
+  "description": "Make your social skills matter",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7"
+  }
+}
