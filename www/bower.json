@@ -10,11 +10,11 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
     "test",
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0-rc.3"
+    "react": "^15.5.4",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.24"
   }
 }

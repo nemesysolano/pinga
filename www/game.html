@@ -8,17 +8,40 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/game.css">
-        <title>Social Pot</title>
+        <link rel="stylesheet" type="text/css" href="css/pinga-card.css">
+        <link rel="stylesheet" type="text/css" href="css/pinga-roller.css">
 
-        <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>     
-        <link rel="import" href="pinga-components/pinga-card.html"/>
+        <title>Social Pot</title>
     </head>
     <body>
-       
-        <section id="card">
-            <pinga-card></pinga-card>
+
+        <section>
+            <pinga-roller></pinga-roller>
         </section>
+        <section>
+            <pinga-card></pinga-card>
+            <pinga-card></pinga-card>
+        <section>
+
         <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/game.js"></script>
+        <script type="text/javascript" src="js/game.js"></script>        
+        <script>
+            (function() {
+            if ('registerElement' in document
+                && 'import' in document.createElement('link')
+                && 'content' in document.createElement('template')) {
+                // platform is good!
+            } else {
+                // polyfill the platform!
+                var e = document.createElement('script');
+                e.src = 'bower_components/webcomponentsjs/webcomponents-lite.min.js';
+                document.body.appendChild(e);
+            }
+            })();            
+        </script>
+        <script src="bower_components/react/react.js"></script>     
+        <script src="bower_components/react/react-dom.js"></script>     
+        <script src="js/pinga-card.js"></script>
+        <script src="js/pinga-roller.js"></script>
     </body>
-</html>
+</html> 
