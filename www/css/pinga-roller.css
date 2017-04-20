@@ -1,0 +1,43 @@
+.balls-container {
+    display: flex;
+    justify-content: center;
+    margin-top:5%;
+}
+.pinga-ball {
+    width: 48px;
+    height: 48px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;        
+    display:inline-block; 
+    margin-left:1%;     
+    border-color:transparent;
+    -webkit-box-shadow: 0 0 8px white;
+    -moz-box-shadow: 0 0 8px white;
+    box-shadow: 0 0 8px white;
+    margin-right:1%;
+}
+
+.balls-container div:nth-child(1) {    
+    background: -moz-linear-gradient(top, rgba(157,140,234,1) 0%, rgba(83,53,232,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(157,140,234,1) 0%,rgba(83,53,232,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(157,140,234,1) 0%,rgba(83,53,232,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.balls-container div:nth-child(2) { /* FF3.6-15 */
+    background: -webkit-linear-gradient(rgba(252,151,10,1) 0%, rgba(224,41,8,1) 100%);
+    background: -moz-linear-gradient(rgba(252,151,10,1) 0%, rgba(224,41,8,1) 100%);
+    background: linear-gradient(rgba(252,151,10,1) 0%, rgba(224,41,8,1) 100%); /* Chrome10-25,Safari5.1-6 */ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.balls-container div:nth-child(3) {
+    background: -moz-linear-gradient(top, rgba(147,237,242,1) 0%, rgba(112,204,116,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(147,237,242,1) 0%,rgba(112,204,116,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(147,237,242,1) 0%,rgba(112,204,116,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.balls-container div:nth-child(4) {
+    background: -moz-linear-gradient(top, rgba(197,222,234,1) 0%, rgba(138,187,215,1) 31%, rgba(6,109,171,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(197,222,234,1) 0%,rgba(138,187,215,1) 31%,rgba(6,109,171,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */                  
+}
