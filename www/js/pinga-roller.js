@@ -1,50 +1,171 @@
-"use strict";
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var PINGA_ROLLER_TEMPLATE = React.createElement(
+const PINGA_ROLLER_TEMPLATE = React.createElement(
     "div",
     { className: "balls-container" },
-    React.createElement("div", { className: "pinga-ball" }),
-    React.createElement("div", { className: "pinga-ball" }),
-    React.createElement("div", { className: "pinga-ball" }),
-    React.createElement("div", { className: "pinga-ball" })
+    React.createElement(
+        "div",
+        { className: "purple-ball" },
+        React.createElement(
+            "span",
+            null,
+            "I00"
+        )
+    ),
+    React.createElement(
+        "div",
+        { className: "red-ball" },
+        React.createElement(
+            "span",
+            null,
+            "P00"
+        )
+    ),
+    React.createElement(
+        "div",
+        { className: "orange-ball" },
+        React.createElement(
+            "span",
+            null,
+            "A00"
+        )
+    ),
+    React.createElement(
+        "div",
+        { className: "blue-ball" },
+        React.createElement(
+            "span",
+            null,
+            "G00"
+        )
+    )
 );
 
-var PingaRoller = function (_HTMLElement) {
-    _inherits(PingaRoller, _HTMLElement);
+/**
+ * This compoment represents the ball roller.
+ * The roller displays the last 4 balls.
+ */
+class PingaRoller extends HTMLElement {
 
-    function PingaRoller() {
-        _classCallCheck(this, PingaRoller);
-
-        var _this = _possibleConstructorReturn(this, (PingaRoller.__proto__ || Object.getPrototypeOf(PingaRoller)).call(this));
-
-        _this.__span = null;
-        return _this;
+    constructor() {
+        super();
     }
 
     /**
-     * Fires when an instance was inserted into the document.
+     * This timeout function is invoked every 3 seconds. 
+     * If current round is complete (this.exhausted == true) then, it stops the geration loop.
      */
-
-
-    _createClass(PingaRoller, [{
-        key: "attachedCallback",
-        value: function attachedCallback() {
-            this.__span = document.createElement('span');
-            this.appendChild(this.__span);
-            ReactDOM.render(PINGA_ROLLER_TEMPLATE, this.__span);
+    onTimeOut() {
+        if (this.exhausted) {
+            this.stop();
+            return;
         }
-    }]);
 
-    return PingaRoller;
-}(HTMLElement);
+        this.roll();
+    }
+
+    /**
+     * Changes the balls' styles in order to catch user's attention.
+     */
+    updateUI() {
+        var balls = this.__balls,
+            lastClassName = balls[balls.length - 1].className,
+            index = 0;
+
+        pinga.shuffle(this.__classes);
+
+        for (let className of this.__classes) {
+            balls[index].className = className;
+            index++;
+        }
+    }
+
+    /**
+     * Generates a ball and update roller's UI.
+     */
+    roll() {
+        var min = 1,
+            max = 89,
+            r = (Math.floor(Math.random() * (max - min + 1)) | 0) + min,
+            numberIndex = 0,
+            selectedNumbers = this.__selectedNumbers,
+            ballLabels = this.__ballLabels;
+
+        selectedNumbers.push(r);
+        numberIndex = selectedNumbers.length - 1;
+
+        for (let ballLabel of ballLabels) {
+            ballLabel.innerHTML = selectedNumbers[numberIndex];
+            numberIndex--;
+
+            if (numberIndex < 0) break;
+        }
+
+        this.updateUI();
+        return r;
+    }
+
+    /**
+     * Returns true if all balls for the current round were generated.
+     * @return this.__selectedNumbers.length > 88
+     */
+    get exhausted() {
+        return this.__selectedNumbers.length > 88;
+    }
+
+    /**
+     * Returns true if when the generation loop is still running.
+     * @return return this.__running;
+     */
+    get running() {
+        return this.__running;
+    }
+
+    /**
+     * 
+     */
+    start() {
+        var self = this;
+
+        if (!this.running) {
+
+            this.__running = true;
+            this.__selectedNumbers = [];
+
+            this.__interval = setInterval(function () {
+                self.onTimeOut();
+            }, 3000);
+        }
+    }
+
+    stop() {
+        clearInterval(this.__interval);
+        this.__running = false;
+    }
+
+    balls() {
+        return this.__balls;
+    }
+
+    /**
+     * Fired when an instance was inserted into the document.
+     */
+    attachedCallback() {
+        this.__span = document.createElement('span');
+        this.__selectedNumbers = [];
+        this.__running = false;
+        this.__interval == null;
+
+        this.appendChild(this.__span);
+        ReactDOM.render(PINGA_ROLLER_TEMPLATE, this.__span);
+
+        this.__balls = this.__span.querySelectorAll(".balls-container div");
+        this.__ballLabels = this.__span.querySelectorAll(".balls-container div span");
+        this.__classes = [];
+
+        for (let ball of this.__balls) {
+            this.__classes.push(ball.className);
+        }
+    }
+}
 
 if (document.createElement('pinga-roller').constructor !== PingaRoller) {
     PingaRoller.prototype.owner = (document._currentScript || document.currentScript).ownerDocument;
