@@ -4,4 +4,5 @@ plugins/
 www/node_modules/
 www/bower_components/
 www/test/
-
+jsx/node_modules/
+js/node_modules/

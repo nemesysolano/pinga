@@ -1,6 +1,7 @@
 
 START FILEWATCHER
 a) filewatcher "www/**/*.*" "cordova prepare browser" &
+b) filewatcher "jsx/src/*.jsx" "babel jsx/src --out-dir www/js --presets=react" &
 
 ADDING / REMOVING PLUGINS
 a) REMOVE --> cordova plugin remove <PLUGIN>
