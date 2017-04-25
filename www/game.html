@@ -23,25 +23,39 @@
             <pinga-card></pinga-card>
         <section>
 
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/game.js"></script>        
-        <script>
-            (function() {
-            if ('registerElement' in document
-                && 'import' in document.createElement('link')
-                && 'content' in document.createElement('template')) {
-                // platform is good! :)
-            } else {
-                // polyfill the platform! :( 
-                var e = document.createElement('script');
-                e.src = 'bower_components/webcomponentsjs/webcomponents-lite.min.js';
-                document.body.appendChild(e);
-            }
-            })();            
-        </script>
+        <!-- Third party & utility libraries -->
+        <script src="js/polyfills.js"></script>
+        <script src="js/contrib/querystring.js"></script>
         <script src="bower_components/react/react.js"></script>     
         <script src="bower_components/react/react-dom.js"></script>     
+
+        <!--Web components -->
+        <script src="js/pinga-session.js"></script>
         <script src="js/pinga-card.js"></script>
         <script src="js/pinga-roller.js"></script>
+
+        <!-- Cordova entry point. -->
+        <script type="text/javascript" src="cordova.js"></script>
+
+        <!-- The game application -->
+        <script>
+            var app = {
+                /**
+                 * Application Constructor
+                 */
+                initialize: function() {
+                    var userId = window.parameters.userId;
+                    this.session = new PingaSession(userId);
+                },
+
+                /**
+                 * Bind any cordova events here. Common events are: 'pause', 'resume', etc.
+                 */
+                onDeviceReady: function() {                    
+                }
+            };
+
+            app.initialize();            
+        </script>
     </body>
 </html> 
