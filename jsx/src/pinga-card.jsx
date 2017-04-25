@@ -12,43 +12,51 @@ const PINGA_CARD_TEMPLATE =
         </thead>
         <tbody id="pingaCardLayoutBody">
             <tr>
-                <td><div className="number-cell">28</div></td>
-                <td><div className="number-cell">15</div></td>
-                <td><div className="number-cell">40</div></td>
-                <td><div className="number-cell">31</div></td>
-                <td><div className="number-cell">22</div></td>
+                <td><div className="number-cell" data-index="0"></div></td>
+                <td><div className="number-cell" data-index="1"></div></td>
+                <td><div className="number-cell" data-index="2"></div></td>
+                <td><div className="number-cell" data-index="3"></div></td>
+                <td><div className="number-cell" data-index="4"></div></td>
             </tr>
             <tr>
-                <td><div className="number-cell">15</div></td>
-                <td><div className="number-cell">89</div></td>
-                <td><div className="number-cell">63</div></td>
-                <td><div className="number-cell">76</div></td>
-                <td><div className="number-cell">66</div></td>
+                <td><div className="number-cell" data-index="0"></div></td>
+                <td><div className="number-cell" data-index="1"></div></td>
+                <td><div className="number-cell" data-index="2"></div></td>
+                <td><div className="number-cell" data-index="3"></div></td>
+                <td><div className="number-cell" data-index="4"></div></td>
             </tr>
             <tr>
-                <td><div className="number-cell">41</div></td>
-                <td><div className="number-cell">52</div></td>
-                <td><div className="number-cell free-cell">&#x1F31F;</div></td>
-                <td><div className="number-cell">66</div></td>
-                <td><div className="number-cell">67</div></td>
+                <td><div className="number-cell" data-index="0"></div></td>
+                <td><div className="number-cell" data-index="1"></div></td>
+                <td><div className="number-cell free-cell" data-index="2"></div></td>
+                <td><div className="number-cell" data-index="3"></div></td>
+                <td><div className="number-cell" data-index="4"></div></td>
             </tr>
             <tr>
-                <td><div className="number-cell">33</div></td>
-                <td><div className="number-cell">45</div></td>
-                <td><div className="number-cell">78</div></td>
-                <td><div className="number-cell">99</div></td>
-                <td><div className="number-cell">71</div></td>
+                <td><div className="number-cell" data-index="0"></div></td>
+                <td><div className="number-cell" data-index="1"></div></td>
+                <td><div className="number-cell" data-index="2"></div></td>
+                <td><div className="number-cell" data-index="3"></div></td>
+                <td><div className="number-cell" data-index="4"></div></td>
             </tr>
             <tr>
-                <td><div className="number-cell">66</div></td>
-                <td><div className="number-cell">67</div></td>
-                <td><div className="number-cell">23</div></td>
-                <td><div className="number-cell">56</div></td>
-                <td><div className="number-cell">34</div></td>
-            </tr>                                                                                                    
+                <td><div className="number-cell" data-index="0"></div></td>
+                <td><div className="number-cell" data-index="1"></div></td>
+                <td><div className="number-cell" data-index="2"></div></td>
+                <td><div className="number-cell" data-index="3"></div></td>
+                <td><div className="number-cell" data-index="4"></div></td>
+            </tr>
         </tbody>
     </table>
 );
+
+const PINGA_CARD_DATA = [
+    [ 1,  2,  3,  4,  5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15],
+    [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+    [31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+    [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60],
+    [61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]
+]
 
 class PingaCard extends HTMLElement {
 
@@ -77,14 +85,64 @@ class PingaCard extends HTMLElement {
         );
     };
 
-    /**
-     * 
-     */
     createdCallback() {
 
     };
-
     
+
+    /**
+     * 
+     * @param {array} Each subarray represent a column in this card. 
+     */    
+    fill(columns) {
+        var
+            span = this.__span,
+            j = 0,
+            stars = span.querySelectorAll(".free-cell");
+
+        for(let column of columns) {
+            let cells = span.querySelectorAll(`div[data-index='${j}']`);
+
+            for(let i = 0; i < column.length; i++) {                
+                cells[i].innerHTML = column[i];
+            }
+
+            j++;
+        }
+
+        for(let start of stars) {
+            start.innerHTML = "&#x1F31F;"
+        }
+
+    }
+    
+    /**
+     * Shuffles columnData and returns its 1st 5 elements.
+     * @param {array} columnData A sub array which is member of PINGA_CARD_DATA.
+     * @param {integer} index Index of columnData.
+     */
+    static shuffleColumn(columnData, index) {
+        var
+            a = columnData.slice(0),
+            b;
+
+        for (let i = a.length; i; i--) {
+            let j = Math.floor(Math.random() * i);
+            [a[i - 1], a[j]] = [a[j], a[i - 1]];
+        }
+
+        b = a.slice(0, 5).sort();
+
+        return b;
+    }
+
+    /**
+     * Fills this card with random data.
+     */
+    autofill() {
+        var columns = PINGA_CARD_DATA.map(PingaCard.shuffleColumn);
+        this.fill(columns);
+    }
     
     /**
      * 

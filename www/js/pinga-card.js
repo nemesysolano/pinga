@@ -63,47 +63,27 @@ const PINGA_CARD_TEMPLATE = React.createElement(
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "28"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "0" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "15"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "1" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "40"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "2" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "31"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "3" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "22"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "4" })
             )
         ),
         React.createElement(
@@ -112,47 +92,27 @@ const PINGA_CARD_TEMPLATE = React.createElement(
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "15"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "0" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "89"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "1" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "63"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "2" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "76"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "3" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "66"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "4" })
             )
         ),
         React.createElement(
@@ -161,47 +121,27 @@ const PINGA_CARD_TEMPLATE = React.createElement(
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "41"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "0" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "52"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "1" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell free-cell" },
-                    "\uD83C\uDF1F"
-                )
+                React.createElement("div", { className: "number-cell free-cell", "data-index": "2" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "66"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "3" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "67"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "4" })
             )
         ),
         React.createElement(
@@ -210,47 +150,27 @@ const PINGA_CARD_TEMPLATE = React.createElement(
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "33"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "0" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "45"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "1" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "78"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "2" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "99"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "3" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "71"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "4" })
             )
         ),
         React.createElement(
@@ -259,51 +179,33 @@ const PINGA_CARD_TEMPLATE = React.createElement(
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "66"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "0" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "67"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "1" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "23"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "2" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "56"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "3" })
             ),
             React.createElement(
                 "td",
                 null,
-                React.createElement(
-                    "div",
-                    { className: "number-cell" },
-                    "34"
-                )
+                React.createElement("div", { className: "number-cell", "data-index": "4" })
             )
         )
     )
 );
+
+const PINGA_CARD_DATA = [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30], [31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45], [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], [61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75]];
 
 class PingaCard extends HTMLElement {
 
@@ -326,10 +228,58 @@ class PingaCard extends HTMLElement {
         ReactDOM.render(PINGA_CARD_TEMPLATE, this.__span);
     }
 
+    createdCallback() {}
+
     /**
      * 
+     * @param {array} Each subarray represent a column in this card. 
      */
-    createdCallback() {}
+    fill(columns) {
+        var span = this.__span,
+            j = 0,
+            stars = span.querySelectorAll(".free-cell");
+
+        for (let column of columns) {
+            let cells = span.querySelectorAll(`div[data-index='${j}']`);
+
+            for (let i = 0; i < column.length; i++) {
+                cells[i].innerHTML = column[i];
+            }
+
+            j++;
+        }
+
+        for (let start of stars) {
+            start.innerHTML = "&#x1F31F;";
+        }
+    }
+
+    /**
+     * Shuffles columnData and returns its 1st 5 elements.
+     * @param {array} columnData A sub array which is member of PINGA_CARD_DATA.
+     * @param {integer} index Index of columnData.
+     */
+    static shuffleColumn(columnData, index) {
+        var a = columnData.slice(0),
+            b;
+
+        for (let i = a.length; i; i--) {
+            let j = Math.floor(Math.random() * i);
+            [a[i - 1], a[j]] = [a[j], a[i - 1]];
+        }
+
+        b = a.slice(0, 5).sort();
+
+        return b;
+    }
+
+    /**
+     * Fills this card with random data.
+     */
+    autofill() {
+        var columns = PINGA_CARD_DATA.map(PingaCard.shuffleColumn);
+        this.fill(columns);
+    }
 
     /**
      * 

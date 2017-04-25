@@ -44,8 +44,14 @@
                  * Application Constructor
                  */
                 initialize: function() {
-                    var userId = window.parameters.userId;
+                    var
+                        userId = window.parameters.userId,
+                        cards = document.getElementsByTagName("pinga-card");
+
                     this.session = new PingaSession(userId);
+                    for(let card of cards) {
+                        card.autofill();
+                    }
                 },
 
                 /**
