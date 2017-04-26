@@ -1,3 +1,4 @@
+'use strict'
 const PINGA_ROLLER_TEMPLATE = 
 (
     <div className="balls-container">
@@ -16,6 +17,7 @@ class PingaRoller extends HTMLElement {
 
     constructor() {
         super();
+        this.__selectedNumbers == null;
     }
 
     /**
@@ -40,7 +42,7 @@ class PingaRoller extends HTMLElement {
             lastClassName = balls[balls.length-1].className,
             index = 0;
             
-        pinga.shuffle(this.__classes);
+        this.__classes.shuffle();
 
         for(let className of this.__classes) {
             balls[index].className = className;
@@ -101,7 +103,9 @@ class PingaRoller extends HTMLElement {
         if(!this.running) {
 
             this.__running = true;
-            this.__selectedNumbers = [];
+
+            if(this.exhausted)
+                this.__selectedNumbers = [];
 
             this.__interval = setInterval(
                 function(){ 
@@ -117,8 +121,33 @@ class PingaRoller extends HTMLElement {
         this.__running = false;
     }
 
+    /**
+     * Copies roller's state into session; session.state property is modified (antipattern ?).
+     * Do not call this method if the roller is still running.
+     * @param {object} session An instance of PingaSession.
+     */
+    save(session) {
+        var state = session.state;
+        state.selectedNumbers = this.selectedNumbers;                
+    }
+
+    /**
+     * Retrieves roller's state from session.
+     * Do not call this method if the roller is still running.
+     * 
+     */
+    load(session) {
+        var state = session.state;
+        this.selectedNumbers = state.selectedNumbers;        
+        this.updateUI();
+    }
+
     balls() {
         return this.__balls;
+    }
+
+    selectedNumbers() {
+        return this.__selectedNumbers;
     }
 
     /**

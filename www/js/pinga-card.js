@@ -1,3 +1,5 @@
+'use strict';
+
 const PINGA_CARD_TEMPLATE = React.createElement(
     "table",
     { id: "pingaCardLayout" },
@@ -212,6 +214,7 @@ class PingaCard extends HTMLElement {
     constructor() {
         super();
         this.__span = null;
+        this.__columns = null;
     }
 
     /**
@@ -231,27 +234,62 @@ class PingaCard extends HTMLElement {
     createdCallback() {}
 
     /**
-     * 
-     * @param {array} Each subarray represent a column in this card. 
+     * Copies cards's state into session; session.state property is modified (antipattern ?).
+     * Do not call this method if the roller is still running.
+     * @param {object} session Instance of PingaSession.
      */
-    fill(columns) {
-        var span = this.__span,
-            j = 0,
-            stars = span.querySelectorAll(".free-cell");
+    save(session) {
+        var state = session.state;
 
-        for (let column of columns) {
+        if (!state.cards) {
+            state.cards = [];
+        }
+        state.cards.push(this.columns);
+    }
+
+    /**
+     * Retrieves roller's state from session.
+     * Do not call this method if the roller is still running.
+     * @param {object} session  Instance of PingaSession.
+     * @param {integer} index The card position inside the container.
+     */
+    load(session, index) {
+        var state = session.state;
+        if (state.cards) {
+            let columns = state.cards[index];
+            this.columns = columns;
+        }
+    }
+
+    /**
+     * @returns {array} A two dimensional array containing card's numbers.
+     */
+    get columns() {
+        return this.__columns;
+    }
+
+    /**
+     * 
+     * @param {array} __columns A two dimensional array containing card's numbers.
+     */
+    set columns(__columns) {
+        var span = this.__span,
+            stars = span.querySelectorAll(".free-cell"),
+            length = __columns.length;
+
+        for (let j = 0; j < length; j++) {
             let cells = span.querySelectorAll(`div[data-index='${j}']`);
 
-            for (let i = 0; i < column.length; i++) {
-                cells[i].innerHTML = column[i];
+            for (let i = 0; i < length; i++) {
+                cells[i].innerHTML = __columns[i][j];
             }
-
-            j++;
         }
 
         for (let start of stars) {
             start.innerHTML = "&#x1F31F;";
         }
+
+        this.__columns = __columns;
     }
 
     /**
@@ -278,7 +316,7 @@ class PingaCard extends HTMLElement {
      */
     autofill() {
         var columns = PINGA_CARD_DATA.map(PingaCard.shuffleColumn);
-        this.fill(columns);
+        this.columns = columns;
     }
 
     /**

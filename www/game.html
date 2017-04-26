@@ -44,21 +44,74 @@
                  * Application Constructor
                  */
                 initialize: function() {
-                    var
-                        userId = window.parameters.userId,
-                        cards = document.getElementsByTagName("pinga-card");
+                    this.session = new PingaSession(window.parameters.userId);
+                    this.roller = document.getElementsByTagName("pinga-roller")[0];
+                    this.cards = document.querySelectorAll("pinga-card");
 
-                    this.session = new PingaSession(userId);
-                    for(let card of cards) {
-                        card.autofill();
-                    }
+                    document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
                 },
 
                 /**
                  * Bind any cordova events here. Common events are: 'pause', 'resume', etc.
                  */
-                onDeviceReady: function() {                    
+                onDeviceReady: function() {                     
+                    document.addEventListener("pause", this.onPause.bind(this), false);
+                    document.addEventListener("resume", this.onResume.bind(this), false);                                      
+                },
+
+                onPause: function() {
+                    var
+                        roller = this.roller,
+                        session = this.session,
+                        cards = this.cards,
+                        length = cards.length,
+                        pausedGame = false;
+
+                    if(roller.running) {
+                        roller.stop();
+
+                        if(!roller.exhausted) {
+
+                            roller.save(session);
+
+                            for(let index = 0; index < length; index++) {
+                                cards[index].save(session);
+                            }
+                            pausedGame = true;
+                        }
+                    }
+
+                    session.state.pausedGame = pausedGame
+                },
+
+                onResume: function() {       
+                    var
+                        session = this.session,
+                        state = session.state,
+                        index = 0,
+                        roller = this.roller,
+                        cards = this.cards,
+                        length = cards.length;
+
+                    if(state.pausedGame) {                        
+
+                        state.pauseGame = false;
+                        roller.load(session);
+
+                        for(let index = 0; index < length; index++) {
+                            cards[index].load(session, index++) 
+                        }
+                    } else {
+                        
+                        for(let index = 0; index < length; index++) {
+                            cards[index].autofill();
+                        }
+
+                    }
+                    
+                    roller.start();
                 }
+
             };
 
             app.initialize();            
