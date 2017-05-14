@@ -285,8 +285,8 @@ class PingaCard extends HTMLElement {
             }
         }
 
-        for (let start of stars) {
-            start.innerHTML = "&#x1F31F;";
+        for (var j = 0; j < stars.length; j++) {
+            stars[j].innerHTML = "&#x1F31F;";
         }
 
         this.__columns = __columns;
@@ -303,7 +303,10 @@ class PingaCard extends HTMLElement {
 
         for (let i = a.length; i; i--) {
             let j = Math.floor(Math.random() * i);
-            [a[i - 1], a[j]] = [a[j], a[i - 1]];
+            let h = a[j];
+
+            a[j] = a[i - 1];
+            a[i - 1] = h;
         }
 
         b = a.slice(0, 5).sort();

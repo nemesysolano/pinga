@@ -95,8 +95,8 @@ class PingaRoller extends HTMLElement {
         selectedNumbers.push(r);
         numberIndex = selectedNumbers.length - 1;
 
-        for (let ballLabel of ballLabels) {
-            ballLabel.innerHTML = selectedNumbers[numberIndex];
+        for (let index = 0; index < ballLabels.length; index++) {
+            ballLabels[index].innerHTML = selectedNumbers[numberIndex];
             numberIndex--;
 
             if (numberIndex < 0) break;
@@ -190,8 +190,8 @@ class PingaRoller extends HTMLElement {
         this.__ballLabels = this.__span.querySelectorAll(".balls-container div span");
         this.__classes = [];
 
-        for (let ball of this.__balls) {
-            this.__classes.push(ball.className);
+        for (let index = 0; index < this.__balls.length; index++) {
+            this.__classes.push(this.__balls[index].className);
         }
     }
 }
